@@ -36,13 +36,13 @@ public class TileATOTransmitterStopPoint extends TileEntity implements IPeripher
                   Locomotive daTrain = (Locomotive)obj;
                    if (daTrain.mtcOverridePressed) { return;}
                   if(daTrain.mtcStatus == 1 |daTrain.mtcStatus == 2  ) {
-                     if(this.stopX == 0.0D) {
+                     if(this.stopX == 0) {
                         return;
                      }
 
-                     daTrain.xFromStopPoint = Double.valueOf(this.stopX);
-                     daTrain.yFromStopPoint = Double.valueOf(this.stopY);
-                     daTrain.zFromStopPoint = Double.valueOf(this.stopZ);
+                     daTrain.xFromStopPoint = this.stopX;
+                     daTrain.yFromStopPoint = this.stopY;
+                     daTrain.zFromStopPoint = this.stopZ;
                      Traincraft.atoSetStopPoint.sendToAllAround(new PacketATOSetStopPoint(daTrain.getEntityId(), Double.valueOf(this.stopX), Double.valueOf(this.stopY), Double.valueOf(this.stopZ)) , new NetworkRegistry.TargetPoint(this.worldObj.provider.dimensionId, daTrain.posX, daTrain.posY, daTrain.posZ, 150.0D));
                   }
                }
