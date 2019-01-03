@@ -1,6 +1,7 @@
 package train.common.mtc;
 
 
+import cpw.mods.fml.common.network.NetworkRegistry;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
@@ -64,7 +65,7 @@ public class TileInfoTransmitterMTC extends TileEntity implements IPeripheral {
                  //   }
 				 if (activated == true) {
                     //ExampleMod.msChannel.sendToAll(new PacketMTC(daTrain.getEntityId(), MTCInfo, 2));
-                    Traincraft.mscChannel.sendToAll(new PacketMTC(daTrain.getEntityId(), MTCInfo, 1));
+                    Traincraft.mscChannel.sendToAllAround(new PacketMTC(daTrain.getEntityId(), MTCInfo, 1) , new NetworkRegistry.TargetPoint(this.worldObj.provider.dimensionId, daTrain.posX, daTrain.posY, daTrain.posZ, 150.0D));
                   }
                 }
             }

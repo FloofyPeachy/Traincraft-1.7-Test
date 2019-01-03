@@ -1,6 +1,7 @@
 package train.common.mtc;
 
 
+import cpw.mods.fml.common.network.NetworkRegistry;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
@@ -42,7 +43,7 @@ public class TileATOTransmitterStopPoint extends TileEntity implements IPeripher
                      daTrain.xFromStopPoint = Double.valueOf(this.stopX);
                      daTrain.yFromStopPoint = Double.valueOf(this.stopY);
                      daTrain.zFromStopPoint = Double.valueOf(this.stopZ);
-                     Traincraft.atoSetStopPoint.sendToAll(new PacketATOSetStopPoint(daTrain.getEntityId(), Double.valueOf(this.stopX), Double.valueOf(this.stopY), Double.valueOf(this.stopZ)));
+                     Traincraft.atoSetStopPoint.sendToAllAround(new PacketATOSetStopPoint(daTrain.getEntityId(), Double.valueOf(this.stopX), Double.valueOf(this.stopY), Double.valueOf(this.stopZ)) , new NetworkRegistry.TargetPoint(this.worldObj.provider.dimensionId, daTrain.posX, daTrain.posY, daTrain.posZ, 150.0D));
                   }
                }
             }
