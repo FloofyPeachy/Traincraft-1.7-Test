@@ -65,6 +65,9 @@ public class Traincraft {
 	public static SimpleNetworkWrapper brakeChannel;
 	public static SimpleNetworkWrapper lockChannel;
 	public static SimpleNetworkWrapper builderChannel;
+	public static SimpleNetworkWrapper updateTrainIDChannel = NetworkRegistry.INSTANCE.newSimpleChannel("updateTrainIDChannel");
+    public static SimpleNetworkWrapper updateDestinationChannel = NetworkRegistry.INSTANCE.newSimpleChannel("updateDestinationChannel");
+	public static SimpleNetworkWrapper degActivateChannel = NetworkRegistry.INSTANCE.newSimpleChannel("DEGActivate");
 
 
 	public static final SimpleNetworkWrapper itaChannel = NetworkRegistry.INSTANCE.newSimpleChannel("TransmitterAspect");
@@ -202,6 +205,10 @@ public class Traincraft {
 			GameRegistry.registerTileEntity(TileInfoGrabberMTC.class, "tileInfoReceiverMTC");
 			GameRegistry.registerTileEntity(TileInfoGrabberDestination.class, "tileInfoReceiverDestination");
 			GameRegistry.registerTileEntity(TileATOTransmitterStopPoint.class, "tileATOTransmitterStopPoint");
+
+			GameRegistry.registerTileEntity(TilePDMInstructionRadio.class, "tilePDMInstructionRadio");
+			GameRegistry.registerBlock(new BlockPDMInstructionRadio(Material.rock), "pdminstructionradio").setBlockName("pdminstructionradio").setCreativeTab(Traincraft.tcTab);
+			BlockIDs.pdmInstructionBlock.block = new BlockPDMInstructionRadio(Material.rock).setHardness(3.5F).setStepSound(Block.soundTypeMetal);
 			try {
 				proxy.registerComputerCraftPeripherals();
 			} catch (ClassNotFoundException e) {

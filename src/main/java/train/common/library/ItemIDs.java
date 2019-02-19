@@ -149,6 +149,7 @@ public enum ItemIDs {
 	minecartLocoEMDF3("ItemRollingStock", "train_emdf3", 10),
 	minecartLocoEMDF7B("ItemRollingStock", "train_emdf7b", 10),
 	minecartLocoEMDF3B("ItemRollingStock", "train_emdf3b", 10),
+	minecartLocoDEG("ItemRollingStock", "train_DEG", 10),
 	minecartLocoDD35B("ItemRollingStock", "train_dd35b", 10),
 	//minecartRotativeDigger("ItemRotativeDigger","train_",10),
 	minecartLocoEr("ItemRollingStock", "train_ussr", 10),
@@ -211,6 +212,7 @@ public enum ItemIDs {
 
 	minecartPassengerHighSpeedCarZeroED("ItemRollingStock", "train_high_speed_cart_zeroed", 14),
 	minecartNYTram("ItemRollingStock", "train_tram_ny", 7),
+	minecartPeachDriverlessMetro("ItemRollingStock", "train_tram_ny",10),
 	minecartLocoHighSpeedZeroED("ItemRollingStock", "train_high_speed_loco_zeroed", 17),
 	minecartLocoA4Mallard("ItemRollingStock", "train_loco_a4_mallard", 14),
 	minecartLocoA4MallardTender("ItemRollingStock", "train_loco_a4_mallard_tender", 5),

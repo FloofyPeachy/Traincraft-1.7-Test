@@ -1,6 +1,4 @@
 package train.common.api;
-
-import buildcraft.api.fuels.BuildcraftFuelRegistry;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -76,8 +74,7 @@ public class LiquidManager {
 
 	@Optional.Method(modid = "BuildCraft|Energy")
 	private void addBCFluids(){
-		BuildcraftFuelRegistry.fuel.addFuel(DIESEL, 30, 200000);
-		BuildcraftFuelRegistry.fuel.addFuel(REFINED_FUEL, 60, 100000);
+
 	}
 
 	@Optional.Method(modid = "Railcraft")

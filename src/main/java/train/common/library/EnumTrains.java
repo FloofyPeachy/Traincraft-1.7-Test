@@ -72,6 +72,10 @@ public enum EnumTrains {
 			0,
 			0, 0, 0, 12000, new String[]{"Yellow", "Black", "Orange"}, 18, 0,
 			new String[] { "Reduces weight carried by 50 tons when fueled" }),
+	DEGCar("Diesel Energy Generator Car",EntityDieselEnergyGeneratorCar.class, ItemIDs.minecartLocoDEG.item, "b-unit", 0, 0, 5, 0,
+			0,
+			0, 0, 0, 12000, new String[]{"Yellow", "Black", "Orange"}, 18, 0,
+			new String[] { "Generates electric energy for electric trains" }),
 	BUnitDD35("DD35 B Unit", EntityBUnitDD35.class, ItemIDs.minecartLocoDD35B.item, "b-unit", 0, 0, 8, 0, 0, 0, 0, 0,
 			12000, null, 18, 0, new String[] { "Reduces weight carried by 80 tons when fueled" }),
 	propagandaUs("Propaganda USA",EntityPropagandaUS.class, ItemIDs.minecartPropagandaUs.item,"decorative",0,0,0.1,0,0,0,0,0,0,new String[]{"Blue", "White", "Red"},14,0),
@@ -198,6 +202,9 @@ public enum EnumTrains {
 	locoElectricCD151("Loco Electric CD151", EntityLocoElectricCD151.class, ItemIDs.minecartLocoCD151.item,
 			"electric", 5438, 150, 0, 10, 0, 170, 0.7, 0.965, 6850, null, 18, -4),
 
+	/** Experimental */
+	locoElectricPeachDriverlessMetro("Peach Driverless Metro", EntityLocoElectricPeachDriverlessMetro.class,  ItemIDs.minecartPeachDriverlessMetro.item,
+			"electric", 149, 89, 0, 10, 0, 170, 0.7, 0.965, 0, null, 18, -3),
 	/** Steam */
 	locoSteamA4("Loco Steam A4 Mallard", EntityLocoSteamMallardA4.class,  ItemIDs.minecartLocoA4Mallard.item, "steam", 2200, 203, 0, 60, 200, 160, 0.65, 0.97, 10000, new String[] { "Blue", "Lime", "Black", "Green", "White" }, 7, -5 ),
 	locoSteamMILW("Loco Steam MILW Class A", EntityLocoSteamMILWClassA.class,  ItemIDs.minecartLocoMILWClassA.item, "steam", 3000, 193, 0, 60, 150, 160, 0.65, 0.97, 10000, null, 7, -4.5 ),

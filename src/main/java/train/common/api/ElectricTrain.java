@@ -10,6 +10,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.FluidStack;
+import train.common.entity.rollingStock.EntityDieselEnergyGeneratorCar;
 
 public abstract class ElectricTrain extends Locomotive {
 
@@ -100,6 +102,24 @@ public abstract class ElectricTrain extends Locomotive {
 				break;
 			}
 		}
+		if (this.fuelTrain < this.maxEnergy) {
+			//Check if a DEG is attached
+			if (cartLinked1 == null) {return;}
+			if (cartLinked1 != null && cartLinked1 instanceof EntityDieselEnergyGeneratorCar) {
+				EntityDieselEnergyGeneratorCar DEG = (EntityDieselEnergyGeneratorCar) cartLinked1;
+				System.out.println(DEG.isActivated);
+				if (((EntityDieselEnergyGeneratorCar)cartLinked1).isActivated) {
+
+
+
+					if (DEG.getFluidAmount() != 0) {
+						DEG.drain(ForgeDirection.UNKNOWN, new FluidStack(LiquidManager.REFINED_FUEL, 50), true);
+						fuelTrain = fuelTrain + 100;
+					}
+				}
+			}
+
+		}
 	}
 	@Override
 	protected void updateFuelTrain(int amount) {
@@ -115,6 +135,9 @@ public abstract class ElectricTrain extends Locomotive {
 				if (fuelTrain < 0) fuelTrain = 0;
 			}
 		}
+
+
+
 		/*if (hasUranium && (rand.nextInt(reduceExplosionChance) == 0) && (!Ignite)) {// fuse
 			Ignite = true;
 			setFire(8);

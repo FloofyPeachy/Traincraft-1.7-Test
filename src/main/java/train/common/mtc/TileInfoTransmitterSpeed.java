@@ -28,6 +28,11 @@ public class TileInfoTransmitterSpeed  extends TileEntity implements IPeripheral
     public Double yFromSpeedChange = 0.0;
     public Double zFromSpeedChange = 0.0;
 
+    public int secondarySetSpeed = 0;
+    public int secondaryNextSpeedLimit = 0;
+    public Double secondaryXFromSpeedChange = 0.0;
+    public Double secondaryYFromSpeedChange = 0.0;
+    public Double secondaryZFromFromSpeedChange = 0.0;
 
 
     public AxisAlignedBB boundingBox = null;
@@ -45,6 +50,11 @@ public class TileInfoTransmitterSpeed  extends TileEntity implements IPeripheral
         this.yFromSpeedChange = nbttagcompound.getDouble("yFromSpeedChange");
         this.zFromSpeedChange = nbttagcompound.getDouble("zFromSpeedChange");
 
+        this.secondarySetSpeed = nbttagcompound.getInteger("secondarySetSpeed");
+        this.secondaryNextSpeedLimit = nbttagcompound.getInteger("secondaryNextSpeedLimit");
+        this.xFromSpeedChange = nbttagcompound.getDouble("secondaryXFromSpeedChange");
+        this.yFromSpeedChange = nbttagcompound.getDouble("secondaryYFromSpeedChange");
+        this.zFromSpeedChange = nbttagcompound.getDouble("secondaryZFromSpeedChange");
 
     }
 
@@ -58,6 +68,11 @@ public class TileInfoTransmitterSpeed  extends TileEntity implements IPeripheral
         nbttagcompound.setDouble("yFromSpeedChange",  this.yFromSpeedChange);
         nbttagcompound.setDouble("zFromSpeedChange",  this.zFromSpeedChange);
 
+        nbttagcompound.setInteger("secondarySetSpeed", this.secondarySetSpeed);
+        nbttagcompound.setInteger("secondaryNextSpeedLimit", this.secondaryNextSpeedLimit);
+        nbttagcompound.setDouble( "secondaryXFromSpeedChange", this.xFromSpeedChange);
+        nbttagcompound.setDouble( "secondaryYFromSpeedChange",  this.yFromSpeedChange);
+        nbttagcompound.setDouble( "secondaryZFromSpeedChange",  this.zFromSpeedChange);
     }
     @Override
 

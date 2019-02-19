@@ -1079,6 +1079,8 @@ public class EntityTracksBuilder extends EntityRollingStock implements IInventor
 			worldObj.setBlock(i + iX, j + hY, k, Blocks.air);
 			this.harvestBlock_do(Vec3.createVectorHelper(i + iX, j + hY, k));
 		}
+
+
 		for (int b = 1; b <= 3; b++) {
 			this.harvestBlock_do(Vec3.createVectorHelper(i + iX, j + hY + b, k));
 			this.harvestBlock_do(Vec3.createVectorHelper(i + iX, j + hY + b, k + 1));

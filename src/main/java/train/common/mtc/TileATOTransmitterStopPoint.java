@@ -9,10 +9,12 @@ import dan200.computercraft.api.peripheral.IPeripheral;
 import java.util.Iterator;
 import java.util.List;
 import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import train.common.Traincraft;
 import train.common.api.Locomotive;
+import train.common.entity.rollingStock.EntityLocoElectricPeachDriverlessMetro;
 import train.common.mtc.packets.PacketATOSetStopPoint;
 
 public class TileATOTransmitterStopPoint extends TileEntity implements IPeripheral {
@@ -21,6 +23,7 @@ public class TileATOTransmitterStopPoint extends TileEntity implements IPeripher
    public double stopX = 0.0;
    public double stopY = 0.0D;
    public double stopZ = 0.0D;
+   public String nextStation = "";
    public AxisAlignedBB boundingBox = null;
 
 
@@ -39,7 +42,9 @@ public class TileATOTransmitterStopPoint extends TileEntity implements IPeripher
                      if(this.stopX == 0) {
                         return;
                      }
-
+                     if (daTrain instanceof EntityLocoElectricPeachDriverlessMetro) {
+                        ((EntityLocoElectricPeachDriverlessMetro)daTrain).nextStation = nextStation;
+                     }
                      daTrain.xFromStopPoint = this.stopX;
                      daTrain.yFromStopPoint = this.stopY;
                      daTrain.zFromStopPoint = this.stopZ;
@@ -57,7 +62,7 @@ public class TileATOTransmitterStopPoint extends TileEntity implements IPeripher
    }
 
    public String[] getMethodNames() {
-      return new String[]{"activate", "deactivate", "setX", "setY", "setZ"};
+      return new String[]{"activate", "deactivate", "setX", "setY", "setZ", "nextStation"};
    }
 
    public Object[] callMethod(IComputerAccess computer, ILuaContext context, int method, Object[] arguments) throws LuaException, InterruptedException {
@@ -77,6 +82,10 @@ public class TileATOTransmitterStopPoint extends TileEntity implements IPeripher
       case 4:
         if (arguments[0] instanceof Double) { this.stopZ = Double.parseDouble(arguments[0].toString()); } else { return new Object[] {"nil"};}
          return new Object[]{Boolean.TRUE};
+         case 5: {
+            if (arguments[0] instanceof String) { this.nextStation = arguments[0].toString();}
+            return new Object[]{Boolean.TRUE};
+         }
       default:
          return new Object[]{"nil"};
       }
@@ -98,4 +107,23 @@ public class TileATOTransmitterStopPoint extends TileEntity implements IPeripher
       return boundingBox;
    }
 
+   @Override
+   public void readFromNBT(NBTTagCompound nbttagcompound) {
+      super.readFromNBT(nbttagcompound);
+      this.isActivated = nbttagcompound.getBoolean("isActivated");
+      this.stopX = nbttagcompound.getDouble("stopX");
+      this.stopY = nbttagcompound.getDouble("stopY");
+      this.stopZ = nbttagcompound.getDouble("stopZ");
+      this.nextStation = nbttagcompound.getString("nextStation");
+   }
+
+   @Override
+   public void writeToNBT(NBTTagCompound nbttagcompound) {
+      super.writeToNBT(nbttagcompound);
+      nbttagcompound.setBoolean("isActivated", this.isActivated);
+      nbttagcompound.setDouble("stopX", this.stopX);
+      nbttagcompound.setDouble("stopY", this.stopY);
+      nbttagcompound.setDouble("stopZ", this.stopZ);
+      nbttagcompound.setString("nextStation", this.nextStation);
+   }
 }

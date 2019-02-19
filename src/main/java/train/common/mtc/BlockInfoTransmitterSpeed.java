@@ -31,8 +31,9 @@ public class BlockInfoTransmitterSpeed extends BlockContainer implements IPeriph
         return new TileInfoTransmitterSpeed();
     }
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int metadata, float sideX, float sideY, float sideZ) {
-       // System.out.println("ting");
-       // Minecraft.getMinecraft().displayGuiScreen(new GuiSpeedTransmitter( world.getTileEntity(x, y, z)));
+        System.out.println("ting");
+        Minecraft.getMinecraft().displayGuiScreen(new GuiSpeedTransmitter( world.getTileEntity(x, y, z)));
+        System.out.println(world.getBlockMetadata(x, y, z));
         return false;
     }
 }

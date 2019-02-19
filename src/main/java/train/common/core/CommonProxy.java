@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.MinecraftForge;
+import train.client.gui.GuiDEG;
 import train.common.Traincraft;
 import train.common.api.EntityRollingStock;
 import train.common.api.Freight;
@@ -92,7 +93,7 @@ public class CommonProxy implements IGuiHandler {
 			computerCraft_registerPeripheralProvider.invoke(null, BlockInfoGrabberMTC.instance);
 			computerCraft_registerPeripheralProvider.invoke(null, BlockInfoTransmitterMTC.instance);
 			computerCraft_registerPeripheralProvider.invoke(null, BlockATOTransmitterStopPoint.instance);
-
+			computerCraft_registerPeripheralProvider.invoke(null, BlockPDMInstructionRadio.instance);
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -158,7 +159,9 @@ public class CommonProxy implements IGuiHandler {
 			return entity1 != null && entity1 instanceof EntityTracksBuilder ? new InventoryBuilder(player.inventory, (EntityTracksBuilder) entity1) : null;
 		case (GuiIDs.LIQUID):
 			return entity1 != null && entity1 instanceof LiquidTank ? new InventoryLiquid(player.inventory, (LiquidTank) entity1) : null;
-		default:
+			case (GuiIDs.DIESEL_ENERGY_GENERATOR):
+				return entity1 != null && entity1 instanceof LiquidTank ? new InventoryLiquid(player.inventory, (LiquidTank) entity1) : null;
+			default:
 			return null;
 		}
 	}

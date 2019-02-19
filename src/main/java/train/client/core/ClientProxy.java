@@ -125,6 +125,7 @@ public class ClientProxy extends CommonProxy {
 					entity1 = (Entity) ent;
 			}
 		}
+		System.out.println(ID);
 		switch (ID) {
 		case (GuiIDs.CRAFTER_TIER_I):
 			return te != null && te instanceof TileCrafterTierI ? new GuiCrafterTier(player.inventory, (TileCrafterTierI) te) : null;
@@ -163,7 +164,10 @@ public class ClientProxy extends CommonProxy {
 		case (GuiIDs.BUILDER):
 			return entity1 != null ? new GuiBuilder(player,player.inventory, entity1) : null;
 		case (GuiIDs.LIQUID):
-			return entity1 != null ? new GuiLiquid(player,player.inventory, entity1) : null;
+			return entity1 != null ? new GuiDEG(player,player.inventory, entity1) : null;
+		case (GuiIDs.DIESEL_ENERGY_GENERATOR):
+				System.out.println("Create ig");
+				return entity1 != null ? new GuiDEG(player,player.inventory, entity1) : null;
 		case (GuiIDs.RECIPE_BOOK):
 			return new GuiRecipeBook(player, player.getCurrentEquippedItem());
 		/*case (GuiIDs.RECIPE_BOOK2):

@@ -19,7 +19,7 @@ import java.awt.event.KeyEvent;
 
 import static org.lwjgl.opengl.GL11.glColor3f;
 
-public class GuiSpeedTransmitter extends GuiScreen {
+public class  GuiSpeedTransmitter extends GuiScreen {
     TileInfoTransmitterSpeed transmitterBlock;
     private GuiTCTextField speedLimitTextField;
     private GuiTCTextField nextSpeedLimitTextField;
